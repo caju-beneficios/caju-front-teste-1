@@ -1,0 +1,18 @@
+{
+  "registrations": [
+    {
+      "admissionDate": "22/10/2023",
+      "email": "luiz123123@caju.com.br",
+      "employeeName": "luizao",
+      "status": "APROVED",
+      "id": "1"
+    },
+    {
+      "id": "aad8",
+      "admissionDate": "22/10/2023",
+      "email": "luiz@caju.com.br",
+      "employeeName": "luizao",
+      "status": "APROVED"
+    }
+  ]
+}
