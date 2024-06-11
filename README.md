@@ -20,38 +20,47 @@ O desafio é melhorar a organização do projeto, refatorar o código e implemen
 
 Sinta-se a vontade para criar novas pastas, novos utils, custom hooks, o que achar melhor para deixar o projeto mais organizado e atiginr os requisitos abaixo.
 
-## Funcionalidades e regras esperadas.
-
+## Especificações
 
 ### Dashboard
-
-
-
-
   
 - Filtrar os cards por coluna, usando o status.
 - Implementar `PUT` ao clicar em Reprovar e alterar o status para `REPROVED`
 - Implementar `PUT` ao clicar em Aprovar e alterar o status para `APPROVED`
+- Implementar `PUT` ao clicar em Revisar novamente e alterar o status para `REVIEW`
+- Implementar `GET` ao carregar a pagina e ao fazer pequisa por `CPF`
 - Implementar `DELETE` ao clicar no lixeira no card.
 - Implementar um loading na tela ao realizar requisições.
+- Realizar a requisição automaticamente ao preencher o cpf completo
 - Atualizar os dados (refetch) ao clicar no icone de atualizar
+
  <br/>
   <img width="268" alt="Screenshot 2024-06-10 at 5 13 47 PM" src="https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/d7dcd73a-56a9-4f28-aaab-e98a65781f76">
 
 
-#### Regras de negócio
-
-- O botão de `Reprovar` e `Aprovar` só deve aparecer em registrations com status `REVIEW` 
-- O botão `Revisar novamente` só deve aparecer em registration com status `REPROVED` ou `APPROVED`
-
 ### Formulário
 
 - Implementar validação no campo de `email` para que aceite apenas emails válidos
+- Implementar validação no campo `nome completo` para que aceite pelo menos um espaço, no mínimo duas letras, e que a primeira letra não seja um número.
+- Implementar validação no campo CPF para aceitar apenas CPFs válidos e adicionar uma máscara de CPF ao campo.
 - Implementar `POST` ao preencher todos os campos corretamentes.
 - Redirecionar ao `/dashboard` ao criar uma nova registration.
 
-## Desenvolvimento
+## Regras de negócio
 
+- Implementar tipagem correta e enums em TypeScript.
+- Todas as requisições devem ter modal de confirmação da ação
+- Todas as requisições devem aparecer uma notificação de sucesso ou erro
+- O botão de `Reprovar` e `Aprovar` só deve aparecer em registrations com status `REVIEW` 
+- O botão `Revisar novamente` só deve aparecer em registration com status `REPROVED` ou `APPROVED`
+
+## Extras (opcional)
+
+- Testes de Integração e End-to-End (E2E)
+- Documentação detalhada utilizando Storybook e Docusaurus
+- Configuração de CI/CD com deploy automatizado
+
+## Desenvolvimento
 
 ```shell
 git clone https://github.com/caju-beneficios/caju-front-teste-1.git
@@ -71,4 +80,3 @@ Se tude tiver dado certo as seguintes portas estarão disponiveis:
 Aplicação http://localhost:3001/
 <br/>
 Json Web Server http://localhost:3000/
-
