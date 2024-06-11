@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const _IconButtonStyled = styled.div`
+export const _IconButtonStyled = styled.button`
   cursor: pointer;
   border: 2px solid #64a98c;
   width: fit-content;
@@ -9,6 +9,7 @@ export const _IconButtonStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
   svg {
     color: #64a98c;
   }
@@ -16,8 +17,12 @@ export const _IconButtonStyled = styled.div`
 
 type IconButtonProps = {
   children?: React.ReactNode;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLButtonElement>;
 
 export const IconButton = (props: IconButtonProps) => {
-  return <_IconButtonStyled {...props}>{props.children}</_IconButtonStyled>;
+  return (
+    <_IconButtonStyled {...props}>
+      {props.children}
+    </_IconButtonStyled>
+  );
 };
