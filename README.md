@@ -7,31 +7,32 @@ O `Dashboard` mostra todas as admissões criadas, com as opções de Aprovar, re
 
 ![Screenshot 2024-06-11 at 11 48 24 AM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/fedeff5c-a0d3-4df1-aebd-1f2d25c56a48)
 
+Dashboard com os cards. (Utilize o componente `RegistrationCard`)
 
-O `Formulário` mostra um formulário simples, que será a formulário que irá popular o nosso dashboard.
+![Screenshot 2024-06-11 at 1 52 35 PM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/3b002341-454b-4b24-82cb-6390656b56cc)
+
+O `Formulario` exibe um formulário simples que será utilizado para preencher o dashboard com os dados.
 
 ![Screenshot 2024-06-11 at 11 48 47 AM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/bbbb211c-165f-40e5-b2af-61adafd61398)
 
 ## Apresentanção do problema
 
-Voce deverá melhorar e implementar algumas funcionalidades nesse projeto.
-
 O desafio é melhorar a organização do projeto, refatorar o código e implementar algumas regras e novas funcionalidades(logo abaixo).
+Sinta-se a vontade para criar novas pastas, novos utils, contextos, custom hooks, o que achar melhor para deixar o projeto mais organizado e atigir as especificações abaixo.
 
-Sinta-se a vontade para criar novas pastas, novos utils, custom hooks, o que achar melhor para deixar o projeto mais organizado e atiginr os requisitos abaixo.
 
 ## Especificações
 
 ### Dashboard
   
+- Implementar `GET` ao carregar a pagina e ao fazer pequisa por `CPF`
 - Filtrar os cards por coluna, usando o status.
 - Implementar `PUT` ao clicar em Reprovar e alterar o status para `REPROVED`
 - Implementar `PUT` ao clicar em Aprovar e alterar o status para `APPROVED`
 - Implementar `PUT` ao clicar em Revisar novamente e alterar o status para `REVIEW`
-- Implementar `GET` ao carregar a pagina e ao fazer pequisa por `CPF`
 - Implementar `DELETE` ao clicar no lixeira no card.
 - Implementar um loading na tela ao realizar requisições.
-- Realizar a requisição automaticamente ao preencher o cpf completo
+- Realizar a requisição automaticamente ao preencher um CPF válido completo
 - Atualizar os dados (refetch) ao clicar no icone de atualizar
 - Adicionar máscara de CPF no campo de pesquisa.
 
@@ -40,9 +41,6 @@ Sinta-se a vontade para criar novas pastas, novos utils, custom hooks, o que ach
 Para realizar a pesquisa por CPF, utilize essa funcionalidade do json-web-server:
 <br/>
 https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#filter
-
- <br/>
-
 
 ### Formulário
 
@@ -60,9 +58,28 @@ https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#filter
 - O botão de `Reprovar` e `Aprovar` só deve aparecer em registrations com status `REVIEW` 
 - O botão `Revisar novamente` só deve aparecer em registration com status `REPROVED` ou `APPROVED`
 
+## API
+Você consumirá uma API mockada localmente, que será executada utilizando o json-server. Para mais informações consulte a [documentação](https://github.com/typicode/json-server/).
+
+Exemplo de Requisição:
+
+```
+POST http://localhost:3000/registrations
+Content-Type: application/json
+{
+  "admissionDate": "23/10/2023",
+  "email": "maria@caju.com.br",
+  "employeeName": "Maria Silva",
+  "status": "REVIEW",
+  "cpf": "12345678901"
+}
+```
+
+
 ## Extras (opcional)
 
-- Testes de Integração e End-to-End (E2E)
+- Testes Unitários e de Integração `(Obrigátorio para Senior e Tech Lead)`
+- End-to-End (E2E) 
 - Documentação detalhada utilizando Storybook e Docusaurus
 - Configuração de CI/CD com deploy automatizado
 
@@ -86,6 +103,11 @@ Abra outro terminal e execute:
 yarn init:db
 ```
 
+Para os testes
+
+```shell
+yarn test:dev
+```
 Se tude tiver dado certo as seguintes portas estarão disponiveis:
 <br/>
 
