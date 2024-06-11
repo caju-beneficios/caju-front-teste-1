@@ -13,6 +13,7 @@ export const Input = styled.input`
   font-size: 16px;
   line-height: 18px;
   font-weight: normal;
+  border-radius:8px;
   :focus {
     outline: none;
     border: 1px solid #007c89;
@@ -26,11 +27,11 @@ type Props = {
 
 const TextField = (props: Props) => {
   return (
-    <>
+    <div>
       <label htmlFor={props.id}>{props.label}</label>
       <Input {...props} />
-      <span>{props.error}</span>
-    </>
+      <span style={{fontSize: 12, color: 'red'}}>{props.error}</span>
+    </div>
   );
 };
 
