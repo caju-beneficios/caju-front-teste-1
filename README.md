@@ -2,6 +2,7 @@
 # Caju Front End Teste
 
 Esse é um teste para você demonstrar suas experiencia como front end, a aplicação basicamente se divide em duas telas, o `Dashboard` e um `Formulário`.
+Voce deverá criar uma plataforma de admissão que permita o usuario adicionar uma admissão com as opções de aprovar, reprovar ou excluir.
 
 O `Dashboard` mostra todas as admissões criadas, com as opções de Aprovar, reprovar, e excluir.
 
