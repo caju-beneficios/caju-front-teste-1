@@ -7,18 +7,16 @@ O `Dashboard` mostra todas as admissões criadas, com as opções de Aprovar, re
 
 <img width="1442" alt="Screenshot 2024-06-10 at 5 18 59 PM" src="https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/a9fb5e0b-9f62-4c6c-b356-e99aba7bb7a6">
 
-O `Formulário` mostra um formulário simples, que será a formulário que irá popular o nosso dashboard.
+O `Formulario` exibe um formulário simples que será utilizado para preencher o dashboard com os dados.
 
 <img width="1444" alt="Screenshot 2024-06-10 at 5 19 26 PM" src="https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/b51bb940-45a2-4672-b465-3001b1ff8ff7">
 
 
 ## Apresentanção do problema
 
-Voce deverá melhorar e implementar algumas funcionalidades nesse projeto.
+O desafio é melhorar a organização do projeto, refatorar o código e implementar algumas regras e funcionalidades(logo abaixo).
 
-O desafio é melhorar a organização do projeto, refatorar o código e implementar algumas regras e novas funcionalidades(logo abaixo).
-
-Sinta-se a vontade para criar novas pastas, novos utils, custom hooks, o que achar melhor para deixar o projeto mais organizado e atiginr os requisitos abaixo.
+Sinta-se a vontade para criar novas pastas, novos utils, contextos, custom hooks, o que achar melhor para deixar o projeto mais organizado e atigir as especificações abaixo.
 
 ## Especificações
 
@@ -54,9 +52,27 @@ Sinta-se a vontade para criar novas pastas, novos utils, custom hooks, o que ach
 - O botão de `Reprovar` e `Aprovar` só deve aparecer em registrations com status `REVIEW` 
 - O botão `Revisar novamente` só deve aparecer em registration com status `REPROVED` ou `APPROVED`
 
+## API
+Você consumirá uma API mockada localmente, que será executada utilizando o json-server. Para mais informações consulte a [documentação](https://github.com/typicode/json-server/).
+
+Exemplo de Requisição:
+
+```
+POST http://localhost:3000/registrations
+Content-Type: application/json
+
+{
+  "admissionDate": "23/10/2023",
+  "email": "maria@caju.com.br",
+  "employeeName": "Maria Silva",
+  "status": "REVIEW",
+  "cpf": "12345678901"
+}
+```
+
 ## Extras (opcional)
 
-- Testes de Integração e End-to-End (E2E)
+- Testes de Integração e/ou End-to-End (E2E)
 - Documentação detalhada utilizando Storybook e Docusaurus
 - Configuração de CI/CD com deploy automatizado
 
