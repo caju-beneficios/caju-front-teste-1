@@ -5,12 +5,12 @@ Esse é um teste para você demonstrar suas experiencia como front end, a aplica
 
 O `Dashboard` mostra todas as admissões criadas, com as opções de Aprovar, reprovar, e excluir.
 
-<img width="1442" alt="Screenshot 2024-06-10 at 5 18 59 PM" src="https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/a9fb5e0b-9f62-4c6c-b356-e99aba7bb7a6">
+![Screenshot 2024-06-11 at 11 48 24 AM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/fedeff5c-a0d3-4df1-aebd-1f2d25c56a48)
+
 
 O `Formulário` mostra um formulário simples, que será a formulário que irá popular o nosso dashboard.
 
-<img width="1444" alt="Screenshot 2024-06-10 at 5 19 26 PM" src="https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/b51bb940-45a2-4672-b465-3001b1ff8ff7">
-
+![Screenshot 2024-06-11 at 11 48 47 AM](https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/bbbb211c-165f-40e5-b2af-61adafd61398)
 
 ## Apresentanção do problema
 
@@ -33,9 +33,15 @@ Sinta-se a vontade para criar novas pastas, novos utils, custom hooks, o que ach
 - Implementar um loading na tela ao realizar requisições.
 - Realizar a requisição automaticamente ao preencher o cpf completo
 - Atualizar os dados (refetch) ao clicar no icone de atualizar
+- Adicionar máscara de CPF no campo de pesquisa.
+
+### Pesquisa por CPF
+
+Para realizar a pesquisa por CPF, utilize essa funcionalidade do json-web-server:
+<br/>
+https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#filter
 
  <br/>
-  <img width="268" alt="Screenshot 2024-06-10 at 5 13 47 PM" src="https://github.com/caju-beneficios/caju-front-teste-1/assets/31169925/d7dcd73a-56a9-4f28-aaab-e98a65781f76">
 
 
 ### Formulário
@@ -59,6 +65,12 @@ Sinta-se a vontade para criar novas pastas, novos utils, custom hooks, o que ach
 - Testes de Integração e End-to-End (E2E)
 - Documentação detalhada utilizando Storybook e Docusaurus
 - Configuração de CI/CD com deploy automatizado
+
+## Dicas e sugestões
+
+- Crie custom hooks para separar a lógica da camada de UI.
+- Utilize alguma lib de validação para o formulário
+- Crie testes que simulem o comportamento esperado do usuario.
 
 ## Desenvolvimento
 
