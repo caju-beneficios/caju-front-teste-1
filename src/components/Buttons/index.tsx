@@ -5,6 +5,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   border: none;
+  justify-content: center;
   border-radius: 36px;
   padding: 8px 32px;
   background-color: #64a98c;
@@ -25,10 +26,9 @@ export const ButtonSmall = styled.button<{
   border-radius: 4px;
   border: none;
   padding: 4px 16px;
-  background-color: ${(props) => props.bgcolor ?? 'none'};
+  background-color: ${(props) => props.bgcolor ?? "none"};
   color: ${(props) => props.color ?? "#000"};
   cursor: pointer;
 `;
-
 
 export default Button;

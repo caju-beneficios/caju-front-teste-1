@@ -1,13 +1,17 @@
 import Router from "~/router";
 import { Header } from "./components/Header";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
-      <Header>
-        <h1>Caju Front Teste</h1>
-      </Header>
-      <Router />
+      <Toaster />
+
+      <Header />
+
+      <main>
+        <Router />
+      </main>
     </>
   );
 }
