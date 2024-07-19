@@ -1,5 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { CgSpinner } from "react-icons/cg";
+import { spin } from "~/common/styles/animations";
 
 export const ButtonContainer = styled.button`
   outline: none;
@@ -17,12 +18,6 @@ export const ButtonContainer = styled.button`
   font-size: 16px;
   font-weight: 600;
 `;
-
-const spin = keyframes`
-    100% {
-        transform: rotate(360deg);
-    }
-    `;
 
 export const Spinner = styled(CgSpinner)`
   animation: ${spin} 1s linear infinite;

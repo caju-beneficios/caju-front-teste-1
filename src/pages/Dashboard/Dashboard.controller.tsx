@@ -8,6 +8,7 @@ import { apiBase } from "~/services/api.service";
 
 interface DashboardContextProps {
   registrations: Registration[];
+  refetching: boolean;
   fetchRegistrations: (query?: string) => Promise<void>;
   handleApprove: (id: string) => Promise<void>;
   handleReprove: (id: string) => Promise<void>;
@@ -18,10 +19,12 @@ interface DashboardContextProps {
 const DashboardContext = React.createContext({} as DashboardContextProps);
 
 export function DashboardProvider({ children }: React.PropsWithChildren) {
+  const [refetching, setRefetching] = React.useState(false);
   const [registrations, setRegistrations] = React.useState<Registration[]>([]);
 
   const fetchRegistrations = React.useCallback(async (query?: string) => {
     try {
+      setRefetching(true);
       const response = await apiBase.get<Registration[]>("/registrations", {
         params: {
           ...(query && {
@@ -32,6 +35,8 @@ export function DashboardProvider({ children }: React.PropsWithChildren) {
       setRegistrations(response.data);
     } catch (error) {
       toast.error("Failed to fetch dashboard data");
+    } finally {
+      setRefetching(false);
     }
   }, []);
 
@@ -108,8 +113,9 @@ export function DashboardProvider({ children }: React.PropsWithChildren) {
   return (
     <DashboardContext.Provider
       value={{
-        fetchRegistrations,
         registrations,
+        refetching,
+        fetchRegistrations,
         handleApprove,
         handleReprove,
         handleReviewAgain,

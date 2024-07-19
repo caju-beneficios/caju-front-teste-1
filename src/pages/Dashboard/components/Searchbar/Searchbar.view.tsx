@@ -1,4 +1,3 @@
-import { HiRefresh } from "react-icons/hi";
 import { useHistory } from "react-router-dom";
 import { Button, IconButton, TextField } from "~/components";
 
@@ -10,7 +9,7 @@ import { useDashboardController } from "../../Dashboard.controller";
 import { validateCpf } from "~/utils/validations";
 
 const SearchBarView = () => {
-  const { fetchRegistrations } = useDashboardController();
+  const { fetchRegistrations, refetching } = useDashboardController();
 
   const [search, setSearch] = React.useState("");
 
@@ -39,9 +38,13 @@ const SearchBarView = () => {
       />
 
       <S.Actions>
-        <IconButton aria-label="Atualizar listagem">
-          <HiRefresh />
+        <IconButton
+          aria-label="Atualizar listagem"
+          onClick={() => fetchRegistrations()}
+        >
+          <S.RefetchingIcon refetching={refetching} />
         </IconButton>
+
         <Button onClick={() => goToNewAdmissionPage()}>Nova Admissão</Button>
       </S.Actions>
     </S.Container>
