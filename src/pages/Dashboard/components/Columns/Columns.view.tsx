@@ -1,14 +1,7 @@
-import * as S from "./styles";
-import RegistrationCard from "../RegistrationCard";
-import {
-  Registration,
-  RegistrationStatus,
-} from "~/common/interfaces/Registration";
-
-type Column = {
-  status: RegistrationStatus;
-  title: string;
-};
+import RegistrationCard from "../RegistrationCard/RegistrationCard.view";
+import * as S from "./Columns.styles";
+import { RegistrationStatus } from "~/common/interfaces/Registration";
+import { Column, ColumnsProps } from "./Columns.types";
 
 const allColumns: Column[] = [
   { status: RegistrationStatus.REVIEW, title: "Pronto para revisar" },
@@ -16,11 +9,7 @@ const allColumns: Column[] = [
   { status: RegistrationStatus.REPROVED, title: "Reprovado" },
 ];
 
-type Props = {
-  registrations?: Registration[];
-};
-
-const Collumns = (props: Props) => {
+const ColumnsView = (props: ColumnsProps) => {
   const renderColumn = ({ status, title }: Column) => {
     const filteredRegistrations = props?.registrations?.filter(
       (registration) => registration.status === status
@@ -41,4 +30,4 @@ const Collumns = (props: Props) => {
   return <S.Container>{allColumns.map(renderColumn)}</S.Container>;
 };
 
-export default Collumns;
+export default ColumnsView;

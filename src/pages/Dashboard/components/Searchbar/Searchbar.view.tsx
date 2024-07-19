@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import { Button, IconButton, TextField } from "~/components";
 
 import routes from "~/router/routes";
-import * as S from "./styles";
+import * as S from "./Searchbar.styles";
 
-export const SearchBar = () => {
+const SearchBarView = () => {
   const history = useHistory();
 
   const goToNewAdmissionPage = () => {
@@ -24,3 +24,5 @@ export const SearchBar = () => {
     </S.Container>
   );
 };
+
+export default SearchBarView;
