@@ -1,32 +1,13 @@
-import TextField from "~/components/TextField";
 import * as S from "./NewUser.styles";
 import { HiOutlineArrowLeft } from "react-icons/hi";
-import { IconButton } from "~/components/Buttons/IconButton";
 import { useHistory } from "react-router-dom";
-import { FormValues, useNewUserController } from "./NewUser.controller";
+import { useNewUserController } from "./NewUser.controller";
 import { Controller, useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { validateCpf } from "~/utils/validations";
-import { Button } from "~/components/Button";
 import { maskCpf } from "~/utils/masks";
-
-const validateSchema = z.object({
-  name: z
-    .string()
-    .min(2, "Nome muito curto")
-    .regex(/^[^\d][^\d]*\s+[^\d\s]+.*$/, {
-      message: "Nome inválido",
-    }),
-  email: z.string().email("Email inválido"),
-  document_number: z
-    .string({ required_error: "CPF obrigatório" })
-    .length(14, "CPF inválido")
-    .refine((v) => validateCpf(v), {
-      message: "CPF inválido",
-    }),
-  date: z.string().min(10, { message: "Data obrigatória" }),
-});
+import { FormValues } from "./NewUser.types";
+import { validateSchema } from "./NewUser.static";
+import { Button, IconButton, TextField } from "~/components";
 
 const NewUserPage = () => {
   const { push } = useHistory();

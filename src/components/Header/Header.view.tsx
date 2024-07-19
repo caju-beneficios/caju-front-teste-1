@@ -1,6 +1,6 @@
 import { HeaderContainer, HeaderSpacer } from "./Header.styles";
 
-export function Header() {
+export default function HeaderView() {
   return (
     <>
       <HeaderContainer>

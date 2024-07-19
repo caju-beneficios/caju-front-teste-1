@@ -2,17 +2,7 @@ import * as React from "react";
 import toast from "react-hot-toast";
 import routes from "~/router/routes";
 import { apiBase } from "~/services/api.service";
-
-interface NewUserControllerProps {
-  push: (route: string) => void;
-}
-
-export interface FormValues {
-  name: string;
-  email: string;
-  document_number: string;
-  date: string;
-}
+import { FormValues, NewUserControllerProps } from "./NewUser.types";
 
 export function useNewUserController(props: NewUserControllerProps) {
   const { push } = props;

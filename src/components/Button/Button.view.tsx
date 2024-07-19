@@ -1,9 +1,5 @@
 import * as S from "./Button.styles";
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  isLoading?: boolean;
-}
+import { ButtonProps } from "./Button.types";
 
 export default function Button(props: ButtonProps) {
   const { children, isLoading, ...rest } = props;
