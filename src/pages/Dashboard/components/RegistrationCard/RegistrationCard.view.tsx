@@ -5,7 +5,10 @@ import {
   HiOutlineCalendar,
   HiOutlineTrash,
 } from "react-icons/hi";
-import { Registration } from "~/common/interfaces/Registration";
+import {
+  Registration,
+  RegistrationStatus,
+} from "~/common/interfaces/Registration";
 import { IconButton } from "~/components";
 
 const RegistrationCardView = ({ data }: { data: Registration }) => {
@@ -25,9 +28,22 @@ const RegistrationCardView = ({ data }: { data: Registration }) => {
       </S.IconAndText>
       <S.Actions>
         <div className="managing-buttons">
-          <S.ButtonSmall bgcolor="rgb(255, 145, 154)">Reprovar</S.ButtonSmall>
-          <S.ButtonSmall bgcolor="rgb(155, 229, 155)">Aprovar</S.ButtonSmall>
-          <S.ButtonSmall bgcolor="#ff8858">Revisar novamente</S.ButtonSmall>
+          {data.status === RegistrationStatus.REVIEW && (
+            <>
+              <S.ButtonSmall bgcolor="rgb(255, 145, 154)">
+                Reprovar
+              </S.ButtonSmall>
+              <S.ButtonSmall bgcolor="rgb(155, 229, 155)">
+                Aprovar
+              </S.ButtonSmall>
+            </>
+          )}
+
+          {[RegistrationStatus.APPROVED, RegistrationStatus.REPROVED].includes(
+            data.status
+          ) && (
+            <S.ButtonSmall bgcolor="#ff8858">Revisar novamente</S.ButtonSmall>
+          )}
         </div>
 
         <IconButton className="delete-button">
