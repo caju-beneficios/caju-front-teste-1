@@ -1,17 +1,20 @@
+import { useDashboardController } from "../../Dashboard.controller";
 import RegistrationCard from "../RegistrationCard/RegistrationCard.view";
+import { allColumns } from "./Columns.static";
 import * as S from "./Columns.styles";
-import { RegistrationStatus } from "~/common/interfaces/Registration";
-import { Column, ColumnsProps } from "./Columns.types";
+import { Column } from "./Columns.types";
 
-const allColumns: Column[] = [
-  { status: RegistrationStatus.REVIEW, title: "Pronto para revisar" },
-  { status: RegistrationStatus.APPROVED, title: "Aprovado" },
-  { status: RegistrationStatus.REPROVED, title: "Reprovado" },
-];
+const ColumnsView = () => {
+  const {
+    registrations,
+    handleApprove,
+    handleReprove,
+    handleReviewAgain,
+    handleDelete,
+  } = useDashboardController();
 
-const ColumnsView = (props: ColumnsProps) => {
   const renderColumn = ({ status, title }: Column) => {
-    const filteredRegistrations = props?.registrations?.filter(
+    const filteredRegistrations = registrations?.filter(
       (registration) => registration.status === status
     );
 
@@ -20,7 +23,14 @@ const ColumnsView = (props: ColumnsProps) => {
         <S.TitleColumn status={status}>{title}</S.TitleColumn>
         <S.CollumContent>
           {filteredRegistrations?.map((registration) => (
-            <RegistrationCard data={registration} key={registration.id} />
+            <RegistrationCard
+              key={registration.id}
+              data={registration}
+              onApprove={handleApprove}
+              onReprove={handleReprove}
+              onReviewAgain={handleReviewAgain}
+              onDelete={handleDelete}
+            />
           ))}
         </S.CollumContent>
       </S.Column>

@@ -5,13 +5,13 @@ import {
   HiOutlineCalendar,
   HiOutlineTrash,
 } from "react-icons/hi";
-import {
-  Registration,
-  RegistrationStatus,
-} from "~/common/interfaces/Registration";
+import { RegistrationStatus } from "~/common/interfaces/Registration";
 import { IconButton } from "~/components";
+import { RegistrationCardProps } from "./RegistrationCard.types";
 
-const RegistrationCardView = ({ data }: { data: Registration }) => {
+const RegistrationCardView = (props: RegistrationCardProps) => {
+  const { data, onApprove, onReprove, onReviewAgain, onDelete } = props;
+
   return (
     <S.Card>
       <S.IconAndText>
@@ -30,10 +30,16 @@ const RegistrationCardView = ({ data }: { data: Registration }) => {
         <div className="managing-buttons">
           {data.status === RegistrationStatus.REVIEW && (
             <>
-              <S.ButtonSmall bgcolor="rgb(255, 145, 154)">
+              <S.ButtonSmall
+                bgcolor="rgb(255, 145, 154)"
+                onClick={() => onReprove(data.id)}
+              >
                 Reprovar
               </S.ButtonSmall>
-              <S.ButtonSmall bgcolor="rgb(155, 229, 155)">
+              <S.ButtonSmall
+                bgcolor="rgb(155, 229, 155)"
+                onClick={() => onApprove(data.id)}
+              >
                 Aprovar
               </S.ButtonSmall>
             </>
@@ -42,11 +48,16 @@ const RegistrationCardView = ({ data }: { data: Registration }) => {
           {[RegistrationStatus.APPROVED, RegistrationStatus.REPROVED].includes(
             data.status
           ) && (
-            <S.ButtonSmall bgcolor="#ff8858">Revisar novamente</S.ButtonSmall>
+            <S.ButtonSmall
+              bgcolor="#ff8858"
+              onClick={() => onReviewAgain(data.id)}
+            >
+              Revisar novamente
+            </S.ButtonSmall>
           )}
         </div>
 
-        <IconButton className="delete-button">
+        <IconButton className="delete-button" onClick={() => onDelete(data.id)}>
           <HiOutlineTrash />
         </IconButton>
       </S.Actions>
