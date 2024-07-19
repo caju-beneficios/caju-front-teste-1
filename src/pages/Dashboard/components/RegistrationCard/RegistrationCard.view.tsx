@@ -57,7 +57,11 @@ const RegistrationCardView = (props: RegistrationCardProps) => {
           )}
         </div>
 
-        <IconButton className="delete-button" onClick={() => onDelete(data.id)}>
+        <IconButton
+          className="delete-button"
+          onClick={() => onDelete(data.id)}
+          aria-label="Deletar admissão"
+        >
           <HiOutlineTrash />
         </IconButton>
       </S.Actions>

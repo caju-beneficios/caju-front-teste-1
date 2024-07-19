@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import routes from "~/router/routes";
 import { apiBase } from "~/services/api.service";
 import { FormValues, NewUserControllerProps } from "./NewUser.types";
+import { unmaskCpf } from "~/utils/masks";
 
 export function useNewUserController(props: NewUserControllerProps) {
   const { push } = props;
@@ -18,7 +19,7 @@ export function useNewUserController(props: NewUserControllerProps) {
           admissionDate: data.date,
           email: data.email,
           employeeName: data.name,
-          cpf: data.document_number,
+          cpf: unmaskCpf(data.document_number),
           status: "REVIEW",
         });
 

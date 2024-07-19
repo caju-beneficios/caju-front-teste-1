@@ -4,19 +4,42 @@ import { Button, IconButton, TextField } from "~/components";
 
 import routes from "~/router/routes";
 import * as S from "./Searchbar.styles";
+import * as React from "react";
+import { maskCpf, unmaskCpf } from "~/utils/masks";
+import { useDashboardController } from "../../Dashboard.controller";
+import { validateCpf } from "~/utils/validations";
 
 const SearchBarView = () => {
+  const { fetchRegistrations } = useDashboardController();
+
+  const [search, setSearch] = React.useState("");
+
   const history = useHistory();
 
   const goToNewAdmissionPage = () => {
     history.push(routes.newUser);
   };
 
+  React.useEffect(() => {
+    if (validateCpf(search)) {
+      void fetchRegistrations(unmaskCpf(search));
+    }
+  }, [fetchRegistrations, search]);
+
   return (
     <S.Container>
-      <TextField placeholder="Digite um CPF válido" />
+      <TextField
+        placeholder="Digite um CPF válido"
+        value={search}
+        onChange={(e) => {
+          const value = e.target.value || "";
+
+          setSearch(maskCpf(value));
+        }}
+      />
+
       <S.Actions>
-        <IconButton aria-label="refetch">
+        <IconButton aria-label="Atualizar listagem">
           <HiRefresh />
         </IconButton>
         <Button onClick={() => goToNewAdmissionPage()}>Nova Admissão</Button>
