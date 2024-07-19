@@ -1,4 +1,5 @@
 module.exports = {
+  ignorePatterns: ["**/.eslintrc.cjs"],
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -29,6 +30,14 @@ module.exports = {
     "import/named": "off",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        checksVoidReturn: {
+          attributes: false,
+        },
+      },
+    ],
   },
   parserOptions: {
     project: "./tsconfig.json",

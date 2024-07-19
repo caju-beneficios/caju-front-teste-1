@@ -4,11 +4,12 @@ import { HiOutlineArrowLeft } from "react-icons/hi";
 import { IconButton } from "~/components/Buttons/IconButton";
 import { useHistory } from "react-router-dom";
 import { FormValues, useNewUserController } from "./NewUser.controller";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { validateCpf } from "~/utils/validations";
 import { Button } from "~/components/Button";
+import { maskCpf } from "~/utils/masks";
 
 const validateSchema = z.object({
   name: z
@@ -19,11 +20,12 @@ const validateSchema = z.object({
     }),
   email: z.string().email("Email inválido"),
   document_number: z
-    .string()
-    .length(11, "CPF inválido")
+    .string({ required_error: "CPF obrigatório" })
+    .length(14, "CPF inválido")
     .refine((v) => validateCpf(v), {
       message: "CPF inválido",
     }),
+  date: z.string().min(10, { message: "Data obrigatória" }),
 });
 
 const NewUserPage = () => {
@@ -31,6 +33,7 @@ const NewUserPage = () => {
   const { goToHome, handleCreateUser } = useNewUserController({ push });
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
@@ -61,12 +64,22 @@ const NewUserPage = () => {
           {...register("email")}
         />
 
-        <TextField
-          placeholder="CPF"
-          label="CPF"
-          error={errors.document_number?.message}
-          disabled={isSubmitting}
-          {...register("document_number")}
+        <Controller
+          render={({ field }) => (
+            <TextField
+              placeholder="CPF"
+              label="CPF"
+              error={errors.document_number?.message}
+              disabled={isSubmitting}
+              value={field.value}
+              onChange={(e: React.ChangeEvent<HTMLInputElement> | null) => {
+                const value = e?.target?.value || "";
+                field.onChange(maskCpf(value));
+              }}
+            />
+          )}
+          name="document_number"
+          control={control}
         />
 
         <TextField
