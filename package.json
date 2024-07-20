@@ -9,7 +9,8 @@
     "build": "tsc && vite build",
     "test:dev": "jest --watch --verbose --no-cache",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cy:open": "cypress open"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -25,6 +26,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "cypress": "^13.13.1",
     "@nabla/vite-plugin-eslint": "^2.0.4",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "13.0.0",
