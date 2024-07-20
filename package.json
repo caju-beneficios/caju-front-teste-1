@@ -8,9 +8,11 @@
     "init:db": "json-server --watch db.json",
     "build": "tsc && vite build",
     "test:dev": "jest --watch --verbose --no-cache",
+    "test:cov": "jest --coverage",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "cy:open": "cypress open"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -26,16 +28,20 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "cypress": "^13.13.1",
+    "@babel/preset-typescript": "^7.24.7",
     "@nabla/vite-plugin-eslint": "^2.0.4",
+    "@testing-library/dom": "^10.3.2",
     "@testing-library/jest-dom": "^6.4.6",
-    "@testing-library/react": "13.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.12",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",
     "@vitejs/plugin-react": "^4.2.1",
+    "cypress": "^13.13.1",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -50,5 +56,12 @@
     "ts-node": "10.9.2",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
+  },
+  "nyc": {
+    "report-dir": "tests/coverage/cypress",
+    "reporter": [
+      "lcov",
+      "json"
+    ]
   }
 }
