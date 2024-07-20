@@ -40,11 +40,15 @@ export function DashboardProvider({ children }: React.PropsWithChildren) {
     }
   }, []);
 
-  const handleApprove = React.useCallback(
-    async (id: string) => {
+  const handleChangeStatus = React.useCallback(
+    async (id: string, status: RegistrationStatus, message: string) => {
       try {
+        const confirmation = window.confirm(message);
+
+        if (!confirmation) return;
+
         await apiBase.patch(`/registrations/${id}`, {
-          status: RegistrationStatus.APPROVED,
+          status: status,
         });
 
         await fetchRegistrations();
@@ -57,36 +61,35 @@ export function DashboardProvider({ children }: React.PropsWithChildren) {
     [fetchRegistrations]
   );
 
+  const handleApprove = React.useCallback(
+    async (id: string) => {
+      await handleChangeStatus(
+        id,
+        RegistrationStatus.APPROVED,
+        "Deseja aprovar essa admissão?"
+      );
+    },
+    [fetchRegistrations]
+  );
+
   const handleReprove = React.useCallback(
     async (id: string) => {
-      try {
-        await apiBase.patch(`/registrations/${id}`, {
-          status: RegistrationStatus.REPROVED,
-        });
-
-        await fetchRegistrations();
-
-        toast.success("Admissão reprovada");
-      } catch (error) {
-        toast.error("Falha ao reprovar admissão");
-      }
+      await handleChangeStatus(
+        id,
+        RegistrationStatus.REPROVED,
+        "Deseja reprovar essa admissão?"
+      );
     },
     [fetchRegistrations]
   );
 
   const handleReviewAgain = React.useCallback(
     async (id: string) => {
-      try {
-        await apiBase.patch(`/registrations/${id}`, {
-          status: RegistrationStatus.REVIEW,
-        });
-
-        await fetchRegistrations();
-
-        toast.success("Admissão enviada para revisão novamente");
-      } catch (error) {
-        toast.error("Falha ao enviar admissão para revisão novamente");
-      }
+      await handleChangeStatus(
+        id,
+        RegistrationStatus.REVIEW,
+        "Deseja revisar essa admissão novamente?"
+      );
     },
     [fetchRegistrations]
   );
@@ -94,6 +97,12 @@ export function DashboardProvider({ children }: React.PropsWithChildren) {
   const handleDelete = React.useCallback(
     async (id: string) => {
       try {
+        const confirmation = window.confirm(
+          "Você deseja deletar essa admissão?"
+        );
+
+        if (!confirmation) return;
+
         await apiBase.delete(`/registrations/${id}`);
 
         await fetchRegistrations();
