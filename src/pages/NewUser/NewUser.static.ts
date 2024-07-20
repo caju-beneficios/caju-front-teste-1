@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { validateCpf } from "~/utils/validations";
+import { validateCpf } from "~/common/validations";
 
 export const validateSchema = z.object({
   name: z

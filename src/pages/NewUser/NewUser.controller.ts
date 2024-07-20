@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import routes from "~/router/routes";
 import { apiBase } from "~/services/api.service";
 import { FormValues, NewUserControllerProps } from "./NewUser.types";
-import { unmaskCpf } from "~/utils/masks";
+import { unmaskCpf } from "~/common/masks";
 
 export function useNewUserController(props: NewUserControllerProps) {
   const { push } = props;
@@ -16,7 +16,7 @@ export function useNewUserController(props: NewUserControllerProps) {
     async (data: FormValues) => {
       try {
         await apiBase.post("/registrations", {
-          admissionDate: data.date,
+          admissionDate: new Date(data.date),
           email: data.email,
           employeeName: data.name,
           cpf: unmaskCpf(data.document_number),

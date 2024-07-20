@@ -4,9 +4,9 @@ import { Button, IconButton, TextField } from "~/components";
 import routes from "~/router/routes";
 import * as S from "./Searchbar.styles";
 import * as React from "react";
-import { maskCpf, unmaskCpf } from "~/utils/masks";
+import { maskCpf, unmaskCpf } from "~/common/masks";
 import { useDashboardController } from "../../Dashboard.controller";
-import { validateCpf } from "~/utils/validations";
+import { validateCpf } from "~/common/validations";
 
 const SearchBarView = () => {
   const { fetchRegistrations, refetching } = useDashboardController();

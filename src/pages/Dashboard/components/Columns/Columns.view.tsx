@@ -19,7 +19,7 @@ const ColumnsView = () => {
     );
 
     return (
-      <S.Column status={status} key={status}>
+      <S.Column status={status} key={status} data-status={status}>
         <S.TitleColumn status={status}>{title}</S.TitleColumn>
         <S.CollumContent>
           {filteredRegistrations?.map((registration) => (

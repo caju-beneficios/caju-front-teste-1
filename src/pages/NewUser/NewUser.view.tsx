@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useNewUserController } from "./NewUser.controller";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { maskCpf } from "~/utils/masks";
+import { maskCpf } from "~/common/masks";
 import { FormValues } from "./NewUser.types";
 import { validateSchema } from "./NewUser.static";
 import { Button, IconButton, TextField } from "~/components";
@@ -46,21 +46,21 @@ const NewUserPage = () => {
         />
 
         <Controller
+          name="document_number"
+          control={control}
           render={({ field }) => (
             <TextField
               placeholder="CPF"
               label="CPF"
               error={errors.document_number?.message}
               disabled={isSubmitting}
-              value={field.value}
+              {...field}
               onChange={(e: React.ChangeEvent<HTMLInputElement> | null) => {
                 const value = e?.target?.value || "";
                 field.onChange(maskCpf(value));
               }}
             />
           )}
-          name="document_number"
-          control={control}
         />
 
         <TextField
@@ -75,6 +75,7 @@ const NewUserPage = () => {
           <Button
             isLoading={isSubmitting}
             onClick={handleSubmit(handleCreateUser)}
+            data-testid="submit-form-button"
           >
             Cadastrar
           </Button>
