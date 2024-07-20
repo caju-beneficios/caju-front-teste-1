@@ -16,7 +16,7 @@ export function useNewUserController(props: NewUserControllerProps) {
     async (data: FormValues) => {
       try {
         await apiBase.post("/registrations", {
-          admissionDate: new Date(data.date),
+          admissionDate: data.date,
           email: data.email,
           employeeName: data.name,
           cpf: unmaskCpf(data.document_number),

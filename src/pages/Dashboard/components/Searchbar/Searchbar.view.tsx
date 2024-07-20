@@ -1,35 +1,37 @@
-import { useHistory } from "react-router-dom";
-import { Button, IconButton, TextField } from "~/components";
-
-import routes from "~/router/routes";
 import * as S from "./Searchbar.styles";
 import * as React from "react";
+import { Button, IconButton, TextField } from "~/components";
 import { maskCpf, unmaskCpf } from "~/common/masks";
 import { useDashboardController } from "../../Dashboard.controller";
+import { useDebounce } from "~/hooks/useDebounce";
 import { validateCpf } from "~/common/validations";
 
 const SearchBarView = () => {
-  const { fetchRegistrations, refetching } = useDashboardController();
+  const { fetchRegistrations, refetching, handleAddNewUser } =
+    useDashboardController();
 
   const [search, setSearch] = React.useState("");
 
-  const history = useHistory();
+  const debouncedSearch = useDebounce(search, 500);
 
-  const goToNewAdmissionPage = () => {
-    history.push(routes.newUser);
-  };
+  const handleSearch = React.useCallback(() => {
+    const isValidCpf = validateCpf(debouncedSearch);
+
+    fetchRegistrations(isValidCpf ? unmaskCpf(debouncedSearch) : undefined);
+  }, [debouncedSearch, fetchRegistrations]);
 
   React.useEffect(() => {
-    if (validateCpf(search)) {
-      void fetchRegistrations(unmaskCpf(search));
-    }
-  }, [fetchRegistrations, search]);
+    handleSearch();
+  }, [debouncedSearch]);
 
   return (
     <S.Container>
       <TextField
+        type="search"
         placeholder="Digite um CPF válido"
         value={search}
+        inputMode="search"
+        role="searchbox"
         onChange={(e) => {
           const value = e.target.value || "";
 
@@ -40,12 +42,12 @@ const SearchBarView = () => {
       <S.Actions>
         <IconButton
           aria-label="Atualizar listagem"
-          onClick={() => fetchRegistrations()}
+          onClick={() => handleSearch()}
         >
           <S.RefetchingIcon refetching={refetching} />
         </IconButton>
 
-        <Button onClick={() => goToNewAdmissionPage()}>Nova Admissão</Button>
+        <Button onClick={handleAddNewUser}>Nova Admissão</Button>
       </S.Actions>
     </S.Container>
   );

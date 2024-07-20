@@ -4,21 +4,16 @@ import {
   Registration,
   RegistrationStatus,
 } from "~/common/interfaces/Registration";
+import routes from "~/router/routes";
 import { apiBase } from "~/services/api.service";
-
-interface DashboardContextProps {
-  registrations: Registration[];
-  refetching: boolean;
-  fetchRegistrations: (query?: string) => Promise<void>;
-  handleApprove: (id: string) => Promise<void>;
-  handleReprove: (id: string) => Promise<void>;
-  handleReviewAgain: (id: string) => Promise<void>;
-  handleDelete: (id: string) => Promise<void>;
-}
+import {
+  DashboardContextProps,
+  DashboardProviderProps,
+} from "./Dashboard.types";
 
 const DashboardContext = React.createContext({} as DashboardContextProps);
 
-export function DashboardProvider({ children }: React.PropsWithChildren) {
+export function DashboardProvider({ children, push }: DashboardProviderProps) {
   const [refetching, setRefetching] = React.useState(false);
   const [registrations, setRegistrations] = React.useState<Registration[]>([]);
 
@@ -115,6 +110,10 @@ export function DashboardProvider({ children }: React.PropsWithChildren) {
     [fetchRegistrations]
   );
 
+  const handleAddNewUser = React.useCallback(() => {
+    push(routes.newUser);
+  }, [push]);
+
   React.useEffect(() => {
     void fetchRegistrations();
   }, [fetchRegistrations]);
@@ -129,6 +128,7 @@ export function DashboardProvider({ children }: React.PropsWithChildren) {
         handleReprove,
         handleReviewAgain,
         handleDelete,
+        handleAddNewUser,
       }}
     >
       {children}
