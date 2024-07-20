@@ -20,6 +20,18 @@ export const IconAndText = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  h3,
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+  }
 `;
 
 export const Actions = styled.div`

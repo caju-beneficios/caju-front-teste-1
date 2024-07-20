@@ -8,6 +8,7 @@ import {
 import { RegistrationStatus } from "~/common/interfaces/Registration";
 import { IconButton } from "~/components";
 import { RegistrationCardProps } from "./RegistrationCard.types";
+import { formatDate } from "~/common/utils/formatDate";
 
 const RegistrationCardView = (props: RegistrationCardProps) => {
   const { data, onApprove, onReprove, onReviewAgain, onDelete } = props;
@@ -24,7 +25,7 @@ const RegistrationCardView = (props: RegistrationCardProps) => {
       </S.IconAndText>
       <S.IconAndText>
         <HiOutlineCalendar />
-        <span>{data.admissionDate}</span>
+        <span>{formatDate(data.admissionDate)}</span>
       </S.IconAndText>
       <S.Actions>
         <div className="managing-buttons">
