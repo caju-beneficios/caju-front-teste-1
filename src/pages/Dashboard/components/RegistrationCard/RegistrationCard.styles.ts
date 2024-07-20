@@ -59,7 +59,6 @@ export const ButtonSmall = styled.button<{
   color?: string;
 }>`
   font-size: 12px;
-  outline: none;
   border-radius: 4px;
   border: none;
   padding: 4px 16px;

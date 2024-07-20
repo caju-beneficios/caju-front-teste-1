@@ -3,7 +3,6 @@ import { CgSpinner } from "react-icons/cg";
 import { spin } from "~/common/styles/animations";
 
 export const ButtonContainer = styled.button`
-  outline: none;
   display: flex;
   align-items: center;
   border: none;
