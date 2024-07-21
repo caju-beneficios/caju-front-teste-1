@@ -2,20 +2,22 @@ import Router from "~/router";
 import { Header } from "./components/Header";
 import { Toaster } from "react-hot-toast";
 import { ConfirmationProvider } from "./hooks/useConfirmation";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./common/styles/theme";
 
 function App() {
   return (
-    <>
-      <Toaster />
+    <ThemeProvider theme={theme}>
+      <ConfirmationProvider>
+        <Toaster />
 
-      <Header />
+        <Header />
 
-      <main>
-        <ConfirmationProvider>
+        <main>
           <Router />
-        </ConfirmationProvider>
-      </main>
-    </>
+        </main>
+      </ConfirmationProvider>
+    </ThemeProvider>
   );
 }
 

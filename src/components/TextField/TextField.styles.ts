@@ -16,8 +16,8 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border: 1px solid #007c89;
-    box-shadow: inset 0 0 0 1px #007c89;
+    border: 1px solid ${(props) => props.theme.colors.primary};
+    box-shadow: inset 0 0 0 1px ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -25,5 +25,13 @@ export const Label = styled.label`
   font-size: 16px;
   line-height: 18px;
   margin-bottom: 8px;
+  display: block;
+`;
+
+export const Error = styled.span`
+  color: #f44;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 8px;
   display: block;
 `;

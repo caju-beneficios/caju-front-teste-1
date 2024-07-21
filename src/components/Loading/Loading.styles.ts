@@ -16,5 +16,5 @@ export const LoadingSpinner = styled(CgSpinner)`
   animation: ${spin} 1s linear infinite;
   margin-left: 8px;
   font-size: 64px;
-  color: #e80537;
+  color: ${(props) => props.theme.colors.terciary};
 `;

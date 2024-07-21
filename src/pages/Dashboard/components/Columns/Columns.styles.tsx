@@ -6,7 +6,7 @@ const registrationStatusStyles: {
 } = {
   REVIEW: {
     background: "#FDF8E9",
-    title: "#d4a01d",
+    title: "#ae810d",
   },
   APPROVED: {
     background: "#EEEEFD",

@@ -22,14 +22,14 @@ const buttonSizes = {
 
 const variants = {
   filled: css`
-    background-color: #64a98c;
-    color: #fff;
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.textOnPrimary};
     border: none;
   `,
   outlined: css`
     background-color: transparent;
-    color: #64a98c;
-    border: 1px solid #64a98c;
+    color: ${(props) => props.theme.colors.primary};
+    border: 1px solid ${(props) => props.theme.colors.primary};
   `,
 };
 
@@ -43,9 +43,9 @@ export const ButtonContainer = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   border-radius: 36px;
-  cursor: pointer;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: ${(props) => props.theme.shadows.md};
   font-weight: 600;
+  cursor: pointer;
 
   ${({ variant }) => variants[variant]}
 
@@ -56,5 +56,5 @@ export const Spinner = styled(CgSpinner)`
   animation: ${spin} 1s linear infinite;
   margin-left: 8px;
   font-size: 24px;
-  color: #fff;
+  color: ${(props) => props.theme.colors.invertedText};
 `;
