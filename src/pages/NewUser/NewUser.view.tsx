@@ -23,7 +23,10 @@ const NewUserPage = () => {
 
   return (
     <S.Card>
-      <IconButton onClick={() => goToHome()} aria-label="back">
+      <IconButton
+        onClick={() => goToHome()}
+        aria-label="Voltar à página anterior"
+      >
         <HiOutlineArrowLeft size={24} />
       </IconButton>
 
@@ -76,6 +79,7 @@ const NewUserPage = () => {
             isLoading={isSubmitting}
             onClick={handleSubmit(handleCreateUser)}
             data-testid="submit-form-button"
+            size="lg"
           >
             Cadastrar
           </Button>

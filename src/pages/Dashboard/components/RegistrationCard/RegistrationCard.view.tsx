@@ -6,7 +6,7 @@ import {
   HiOutlineTrash,
 } from "react-icons/hi";
 import { RegistrationStatus } from "~/common/interfaces/Registration";
-import { IconButton } from "~/components";
+import { Button, IconButton } from "~/components";
 import { RegistrationCardProps } from "./RegistrationCard.types";
 import { formatDate } from "~/common/utils/formatDate";
 
@@ -31,30 +31,33 @@ const RegistrationCardView = (props: RegistrationCardProps) => {
         <div className="managing-buttons">
           {data.status === RegistrationStatus.REVIEW && (
             <>
-              <S.ButtonSmall
-                bgcolor="rgb(255, 145, 154)"
+              <Button
+                size="sm"
                 onClick={() => onReprove(data.id)}
+                className="reprove-button"
               >
                 Reprovar
-              </S.ButtonSmall>
-              <S.ButtonSmall
-                bgcolor="rgb(155, 229, 155)"
+              </Button>
+              <Button
+                size="sm"
                 onClick={() => onApprove(data.id)}
+                className="approve-button"
               >
                 Aprovar
-              </S.ButtonSmall>
+              </Button>
             </>
           )}
 
           {[RegistrationStatus.APPROVED, RegistrationStatus.REPROVED].includes(
             data.status
           ) && (
-            <S.ButtonSmall
-              bgcolor="#ff8858"
+            <Button
+              size="sm"
               onClick={() => onReviewAgain(data.id)}
+              className="review-again-button"
             >
               Revisar novamente
-            </S.ButtonSmall>
+            </Button>
           )}
         </div>
 

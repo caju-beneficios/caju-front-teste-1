@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   border: 4px solid #fff;
   margin: 16px;
   border-radius: 8px;
@@ -52,17 +52,19 @@ export const Actions = styled.div`
       color: #c30000;
     }
   }
-`;
 
-export const ButtonSmall = styled.button<{
-  bgcolor?: string;
-  color?: string;
-}>`
-  font-size: 12px;
-  border-radius: 4px;
-  border: none;
-  padding: 4px 16px;
-  background-color: ${(props) => props.bgcolor ?? "none"};
-  color: ${(props) => props.color ?? "#000"};
-  cursor: pointer;
+  .approve-button {
+    background-color: #9be59b;
+    color: #111;
+  }
+
+  .reprove-button {
+    background-color: #ff919a;
+    color: #111;
+  }
+
+  .review-again-button {
+    background-color: #ff8858;
+    color: #111;
+  }
 `;

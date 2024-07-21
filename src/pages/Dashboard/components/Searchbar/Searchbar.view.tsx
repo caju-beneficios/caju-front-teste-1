@@ -47,7 +47,9 @@ const SearchBarView = () => {
           <S.RefetchingIcon refetching={refetching} />
         </IconButton>
 
-        <Button onClick={handleAddNewUser}>Nova Admissão</Button>
+        <Button size="lg" onClick={handleAddNewUser}>
+          Nova Admissão
+        </Button>
       </S.Actions>
     </S.Container>
   );
