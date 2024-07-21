@@ -1,6 +1,7 @@
 import Router from "~/router";
 import { Header } from "./components/Header";
 import { Toaster } from "react-hot-toast";
+import { ConfirmationProvider } from "./hooks/useConfirmation";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <Header />
 
       <main>
-        <Router />
+        <ConfirmationProvider>
+          <Router />
+        </ConfirmationProvider>
       </main>
     </>
   );
