@@ -14,7 +14,7 @@
       "email": "filipe@caju.com.br",
       "employeeName": "Filipe Marins",
       "cpf": "78502270001",
-      "status": "REVIEW"
+      "status": "APPROVED"
     },
     {
       "id": "aed2",
@@ -23,14 +23,6 @@
       "employeeName": "José Leão",
       "cpf": "78502270001",
       "status": "REPROVED"
-    },
-    {
-      "id": "ee3e",
-      "admissionDate": "2024-07-21",
-      "email": "ltoningalvan@gmail.com",
-      "employeeName": "Luan Galvan",
-      "cpf": "91400078040",
-      "status": "REVIEW"
     }
   ]
 }

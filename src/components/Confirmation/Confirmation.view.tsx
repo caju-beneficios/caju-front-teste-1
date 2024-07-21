@@ -28,10 +28,16 @@ export default function Confirmation(props: ConfirmationDialogProps) {
         <DialogDescription>{description}</DialogDescription>
 
         <DialogActions>
-          <Button onClick={onClose} variant="outlined">
+          <Button
+            onClick={onClose}
+            variant="outlined"
+            data-testid="cancel-button"
+          >
             {secondaryActionText}
           </Button>
-          <Button onClick={onSubmit}>{primaryActionText}</Button>
+          <Button onClick={onSubmit} data-testid="confirm-button">
+            {primaryActionText}
+          </Button>
         </DialogActions>
       </Dialog>
     </BackgroundBackdrop>

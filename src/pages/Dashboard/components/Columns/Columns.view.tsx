@@ -30,6 +30,7 @@ const ColumnsView = () => {
               onReprove={handleReprove}
               onReviewAgain={handleReviewAgain}
               onDelete={handleDelete}
+              data-testid={`registration-card-${registration.id}`}
             />
           ))}
         </S.CollumContent>

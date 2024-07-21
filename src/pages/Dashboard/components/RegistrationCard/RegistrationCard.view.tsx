@@ -11,10 +11,11 @@ import { RegistrationCardProps } from "./RegistrationCard.types";
 import { formatDate } from "~/common/utils/formatDate";
 
 const RegistrationCardView = (props: RegistrationCardProps) => {
-  const { data, onApprove, onReprove, onReviewAgain, onDelete } = props;
+  const { data, onApprove, onReprove, onReviewAgain, onDelete, ...rest } =
+    props;
 
   return (
-    <S.Card>
+    <S.Card {...rest}>
       <S.IconAndText>
         <HiOutlineUser />
         <h3>{data.employeeName}</h3>

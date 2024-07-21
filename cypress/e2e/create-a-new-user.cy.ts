@@ -1,4 +1,8 @@
 describe("Create a new user", () => {
+  beforeEach(() => {
+    cy.exec("yarn run db:reset");
+  });
+
   it("should be able to create a new user", () => {
     cy.visit("http://localhost:3001/#/new-user");
 
