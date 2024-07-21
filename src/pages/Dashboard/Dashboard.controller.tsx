@@ -16,6 +16,7 @@ const DashboardContext = React.createContext({} as DashboardContextProps);
 
 export function DashboardProvider({ children, push }: DashboardProviderProps) {
   const [refetching, setRefetching] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const [registrations, setRegistrations] = React.useState<Registration[]>([]);
 
   const confirmation = useConfirmation();
@@ -40,11 +41,12 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
 
   const handleChangeStatus = React.useCallback(
     async (id: string, status: RegistrationStatus, message: string) => {
-      try {
-        confirmation({
-          title: "Atenção",
-          description: message,
-        }).then(async () => {
+      confirmation({
+        title: "Atenção",
+        description: message,
+      }).then(async () => {
+        try {
+          setLoading(true);
           await apiBase.patch(`/registrations/${id}`, {
             status: status,
           });
@@ -52,10 +54,12 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
           await fetchRegistrations();
 
           toast.success("Admissão aprovada");
-        });
-      } catch (error) {
-        toast.error("Falha ao aprovar admissão");
-      }
+        } catch (error) {
+          toast.error("Falha ao aprovar admissão");
+        } finally {
+          setLoading(false);
+        }
+      });
     },
     [fetchRegistrations]
   );
@@ -95,20 +99,24 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
 
   const handleDelete = React.useCallback(
     async (id: string) => {
-      try {
-        confirmation({
-          title: "Atenção",
-          description: "Você deseja deletar essa admissão?",
-        }).then(async () => {
+      confirmation({
+        title: "Atenção",
+        description: "Você deseja deletar essa admissão?",
+      }).then(async () => {
+        try {
+          setLoading(true);
+
           await apiBase.delete(`/registrations/${id}`);
 
           await fetchRegistrations();
 
           toast.success("Admissão deletada");
-        });
-      } catch (error) {
-        toast.error("Falha ao deletar admissão");
-      }
+        } catch (error) {
+          toast.error("Falha ao deletar admissão");
+        } finally {
+          setLoading(false);
+        }
+      });
     },
     [fetchRegistrations]
   );
@@ -125,6 +133,7 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
     <DashboardContext.Provider
       value={{
         registrations,
+        loading,
         refetching,
         fetchRegistrations,
         handleApprove,

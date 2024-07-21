@@ -11,6 +11,7 @@ export type RegistrationsList = {
 export interface DashboardContextProps {
   registrations: Registration[];
   refetching: boolean;
+  loading: boolean;
   fetchRegistrations: (query?: string) => Promise<void>;
   handleApprove: (id: string) => Promise<void>;
   handleReprove: (id: string) => Promise<void>;

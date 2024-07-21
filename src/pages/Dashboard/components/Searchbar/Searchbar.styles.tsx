@@ -7,6 +7,10 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const Actions = styled.div`
@@ -14,6 +18,10 @@ export const Actions = styled.div`
   justify-content: flex-end;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 768px) {
+    flex-direction: row-reverse;
+  }
 `;
 
 export const RefetchingIcon = styled(HiRefresh)<{ refetching: boolean }>`
