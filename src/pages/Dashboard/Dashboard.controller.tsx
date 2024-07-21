@@ -10,12 +10,15 @@ import {
   DashboardContextProps,
   DashboardProviderProps,
 } from "./Dashboard.types";
+import { useConfirmation } from "~/hooks/useConfirmation";
 
 const DashboardContext = React.createContext({} as DashboardContextProps);
 
 export function DashboardProvider({ children, push }: DashboardProviderProps) {
   const [refetching, setRefetching] = React.useState(false);
   const [registrations, setRegistrations] = React.useState<Registration[]>([]);
+
+  const confirmation = useConfirmation();
 
   const fetchRegistrations = React.useCallback(async (query?: string) => {
     try {
@@ -38,17 +41,18 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
   const handleChangeStatus = React.useCallback(
     async (id: string, status: RegistrationStatus, message: string) => {
       try {
-        const confirmation = window.confirm(message);
+        confirmation({
+          title: "Atenção",
+          description: message,
+        }).then(async () => {
+          await apiBase.patch(`/registrations/${id}`, {
+            status: status,
+          });
 
-        if (!confirmation) return;
+          await fetchRegistrations();
 
-        await apiBase.patch(`/registrations/${id}`, {
-          status: status,
+          toast.success("Admissão aprovada");
         });
-
-        await fetchRegistrations();
-
-        toast.success("Admissão aprovada");
       } catch (error) {
         toast.error("Falha ao aprovar admissão");
       }
@@ -92,17 +96,16 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
   const handleDelete = React.useCallback(
     async (id: string) => {
       try {
-        const confirmation = window.confirm(
-          "Você deseja deletar essa admissão?"
-        );
+        confirmation({
+          title: "Atenção",
+          description: "Você deseja deletar essa admissão?",
+        }).then(async () => {
+          await apiBase.delete(`/registrations/${id}`);
 
-        if (!confirmation) return;
+          await fetchRegistrations();
 
-        await apiBase.delete(`/registrations/${id}`);
-
-        await fetchRegistrations();
-
-        toast.success("Admissão deletada");
+          toast.success("Admissão deletada");
+        });
       } catch (error) {
         toast.error("Falha ao deletar admissão");
       }
