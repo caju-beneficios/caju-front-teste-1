@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button, IconButton, TextField } from "~/components";
 import { maskCpf, unmaskCpf } from "~/common/masks";
 import { useDashboardController } from "../../Dashboard.controller";
-import { useDebounce } from "~/hooks/useDebounce";
 import { validateCpf } from "~/common/validations";
 
 const SearchBarView = () => {
@@ -11,18 +10,21 @@ const SearchBarView = () => {
     useDashboardController();
 
   const [search, setSearch] = React.useState("");
-
-  const debouncedSearch = useDebounce(search, 500);
+  const [isFiltering, setIsFiltering] = React.useState(false);
 
   const handleSearch = React.useCallback(() => {
-    const isValidCpf = validateCpf(debouncedSearch);
+    const isValidCpf = validateCpf(unmaskCpf(search));
 
-    fetchRegistrations(isValidCpf ? unmaskCpf(debouncedSearch) : undefined);
-  }, [debouncedSearch, fetchRegistrations]);
+    if ((!isValidCpf && !isFiltering) || (isValidCpf && isFiltering)) return;
+
+    fetchRegistrations(isValidCpf ? unmaskCpf(search) : undefined);
+
+    setIsFiltering(isValidCpf);
+  }, [isFiltering, fetchRegistrations, search]);
 
   React.useEffect(() => {
     handleSearch();
-  }, [debouncedSearch]);
+  }, [handleSearch]);
 
   return (
     <S.Container>
