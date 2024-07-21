@@ -8,17 +8,27 @@
     "preview": "vite preview",
     "init:db": "json-server --watch db.json",
     "build": "tsc && vite build",
-    "test:dev": "jest --watch --verbose --no-cache",
-    "test:cov": "jest --coverage",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "test:jest": "jest --coverage",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "test:ci": "start-server-and-test init:db http://localhost:3000 dev http://localhost:3001 cy:run",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "test:cy": "start-server-and-test init:db http://localhost:3000 dev http://localhost:3001 cy:run",
+    "test": "npm run test:jest && npm run test:cy",
+    "pretest": "rm -rf .nyc_output || true",
+    "posttest": "npm run report:combined",
+    "mkdir:reports": "mkdir reports || true",
+    "precopy:reports": "npm run mkdir:reports",
+    "copy:reports": "cp cypress-coverage/coverage-final.json reports/from-cypress.json && cp jest-coverage/coverage-final.json reports/from-jest.json",
+    "precombine:reports": "npm run copy:reports && mkdir .nyc_output || true",
+    "combine:reports": "npx nyc merge reports && mv coverage.json .nyc_output/out.json",
+    "prereport:combined": "npm run combine:reports",
+    "report:combined": "npx nyc report --reporter lcov --reporter text --report-dir coverage"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "axios": "^1.7.2",
     "json-server": "^1.0.0-beta.1",
+    "nyc": "^17.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.52.1",
@@ -26,10 +36,13 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "5.1.2",
     "styled-components": "^6.1.11",
+    "vite-plugin-istanbul": "^6.0.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
+    "@cypress/code-coverage": "^3.12.42",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@nabla/vite-plugin-eslint": "^2.0.4",
     "@testing-library/dom": "^10.3.2",
     "@testing-library/jest-dom": "^6.4.6",
@@ -61,10 +74,6 @@
     "vite": "^5.2.0"
   },
   "nyc": {
-    "report-dir": "tests/coverage/cypress",
-    "reporter": [
-      "lcov",
-      "json"
-    ]
+    "report-dir": "cypress-coverage"
   }
 }

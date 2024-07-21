@@ -1,4 +1,4 @@
-import { validateCpf } from "../cpf.validation";
+import { validateCpf } from "..";
 
 test("should be able to validate a CPF", () => {
   expect(validateCpf("")).toBe(false);

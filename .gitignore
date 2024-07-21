@@ -26,3 +26,7 @@ dist-ssr
 
 
 coverage
+cypress-coverage
+jest-coverage
+.nyc_output
+reports

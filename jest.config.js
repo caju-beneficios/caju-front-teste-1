@@ -10,7 +10,8 @@ export default {
   moduleNameMapper: {
     "^~/(.+)": "<rootDir>/src/$1",
   },
+  collectCoverage: true,
   collectCoverageFrom: ["src/**/*.{ts,tsx}"],
   setupFilesAfterEnv: ["<rootDir>/jest-setup.ts"],
-  coverageDirectory: "<rootDir>/tests/coverage/jest",
+  coverageDirectory: "<rootDir>/jest-coverage",
 };

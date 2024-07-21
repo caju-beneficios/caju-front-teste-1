@@ -1,4 +1,4 @@
-import { maskCpf, unmaskCpf } from "../cpf.mask";
+import { maskCpf, unmaskCpf } from "..";
 
 describe("CPF Mask", () => {
   it("should be able to mask a CPF", () => {

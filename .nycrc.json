@@ -1,0 +1,8 @@
+{
+  "report-dir": "cypress-coverage",
+  "all": true,
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "check-coverage": true,
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["cypress/**/*.*", "**/*.d.ts", "**/*.cy.tsx", "**/*.cy.ts"]
+}
