@@ -5,7 +5,7 @@ export const theme = {
     secondary: "#ff7500",
     textOnPrimary: "#fff",
     text: "#111",
-    invetedText: "#fff",
+    invertedText: "#fff",
     terciary: "#e80537",
   },
   gradients: {

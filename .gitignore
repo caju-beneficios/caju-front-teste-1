@@ -30,3 +30,4 @@ cypress-coverage
 jest-coverage
 .nyc_output
 reports
+data

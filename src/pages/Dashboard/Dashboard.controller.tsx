@@ -33,7 +33,7 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
       });
       setRegistrations(response.data);
     } catch (error) {
-      toast.error("Failed to fetch dashboard data");
+      toast.error("Erro ao buscar admissões");
     } finally {
       setRefetching(false);
     }
@@ -41,7 +41,7 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
 
   const handleChangeStatus = React.useCallback(
     async (id: string, status: RegistrationStatus, message: string) => {
-      confirmation({
+      await confirmation({
         title: "Atenção",
         description: message,
       }).then(async () => {
@@ -61,7 +61,7 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
         }
       });
     },
-    [fetchRegistrations]
+    [confirmation, fetchRegistrations]
   );
 
   const handleApprove = React.useCallback(
@@ -72,7 +72,7 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
         "Deseja aprovar essa admissão?"
       );
     },
-    [fetchRegistrations]
+    [handleChangeStatus]
   );
 
   const handleReprove = React.useCallback(
@@ -83,7 +83,7 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
         "Deseja reprovar essa admissão?"
       );
     },
-    [fetchRegistrations]
+    [handleChangeStatus]
   );
 
   const handleReviewAgain = React.useCallback(
@@ -94,12 +94,12 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
         "Deseja revisar essa admissão novamente?"
       );
     },
-    [fetchRegistrations]
+    [handleChangeStatus]
   );
 
   const handleDelete = React.useCallback(
     async (id: string) => {
-      confirmation({
+      await confirmation({
         title: "Atenção",
         description: "Você deseja deletar essa admissão?",
       }).then(async () => {
@@ -118,7 +118,7 @@ export function DashboardProvider({ children, push }: DashboardProviderProps) {
         }
       });
     },
-    [fetchRegistrations]
+    [confirmation, fetchRegistrations]
   );
 
   const handleAddNewUser = React.useCallback(() => {

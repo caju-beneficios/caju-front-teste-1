@@ -1,5 +1,12 @@
 module.exports = {
-  ignorePatterns: ["**/.eslintrc.cjs"],
+  ignorePatterns: [
+    "**/.eslintrc.cjs",
+    "cypress/**",
+    "jest.config.ts",
+    "cypress.config.ts",
+    "jest-setup.ts",
+    "vite.config.ts",
+  ],
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
@@ -30,6 +37,7 @@ module.exports = {
     "import/named": "off",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-misused-promises": [
       2,
       {
@@ -41,5 +49,6 @@ module.exports = {
   },
   parserOptions: {
     tsconfigRootDir: "./",
+    project: "./tsconfig.json",
   },
 };

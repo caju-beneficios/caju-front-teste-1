@@ -1,6 +1,7 @@
 import Button from "./Button.view";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { TestProvider } from "~/tests/TestProvider";
 
 describe("Button", () => {
   it("should be able to click on the button", async () => {
@@ -9,7 +10,8 @@ describe("Button", () => {
     render(
       <Button data-testid="button" onClick={onClick}>
         Click me
-      </Button>
+      </Button>,
+      { wrapper: TestProvider }
     );
 
     const button = screen.getByTestId("button");
@@ -23,7 +25,8 @@ describe("Button", () => {
     render(
       <Button data-testid="button" isLoading>
         Click me
-      </Button>
+      </Button>,
+      { wrapper: TestProvider }
     );
 
     const button = screen.getByTestId("button");

@@ -39,17 +39,16 @@ export const ConfirmationProvider = ({ children }: React.PropsWithChildren) => {
 
   return (
     <>
-      <ConfirmationContext.Provider
-        value={openConfirmation}
-        children={children}
-      />
+      <ConfirmationContext.Provider value={openConfirmation}>
+        {children}
+      </ConfirmationContext.Provider>
 
       <Confirmation
         open={Boolean(confirmationState)}
         onSubmit={handleSubmit}
         onClose={handleClose}
-        description={confirmationState?.description!}
-        title={confirmationState?.title!}
+        description={confirmationState?.description || ""}
+        title={confirmationState?.title || ""}
       />
     </>
   );
