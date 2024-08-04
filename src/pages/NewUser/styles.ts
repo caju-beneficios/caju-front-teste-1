@@ -9,6 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 16px;
+  padding-top: 32px;
 `;
 
 export const Card = styled.div`
