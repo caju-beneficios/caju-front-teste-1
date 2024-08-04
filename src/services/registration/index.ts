@@ -2,7 +2,7 @@ import axios from "axios";
 import { queryClient } from "~/App";
 import { Registration, RegistrationStatus } from "~/types/registration";
 
-const endpoint = "http://localhost:3000/registrations";
+export const endpoint = "http://localhost:3000/registrations";
 
 const fetchAll = async (
   registration: Partial<Registration>
