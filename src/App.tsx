@@ -1,5 +1,8 @@
 import Router from "~/router";
 import { Header } from "./components/Header";
+import { QueryClientProvider, QueryClient } from "react-query";
+
+export const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -7,7 +10,9 @@ function App() {
       <Header>
         <h1>Caju Front Teste</h1>
       </Header>
-      <Router />
+      <QueryClientProvider client={queryClient}>
+        <Router />
+      </QueryClientProvider>
     </>
   );
 }
