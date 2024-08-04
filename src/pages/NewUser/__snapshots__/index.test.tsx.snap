@@ -1,0 +1,240 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewUserPage /> Should match snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="sc-dcJtft iuIYWX"
+      >
+        <div
+          class="sc-iGgVNO dYuAyX"
+        >
+          <button
+            aria-label="back"
+            class="sc-gEvDqW ehnXWQ"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div>
+            <label>
+              Nome
+            </label>
+            <input
+              class="sc-aYaIB fLhaLP"
+              label="Nome"
+              placeholder="Nome"
+            />
+            <span
+              style="font-size: 12px; color: red;"
+            />
+          </div>
+          <div>
+            <label>
+              Email
+            </label>
+            <input
+              class="sc-aYaIB fLhaLP"
+              label="Email"
+              placeholder="Email"
+              type="email"
+            />
+            <span
+              style="font-size: 12px; color: red;"
+            />
+          </div>
+          <div>
+            <label>
+              CPF
+            </label>
+            <input
+              class="sc-aYaIB fLhaLP"
+              label="CPF"
+              placeholder="CPF"
+              value=""
+            />
+            <span
+              style="font-size: 12px; color: red;"
+            />
+          </div>
+          <div>
+            <label>
+              Data de admissão
+            </label>
+            <input
+              class="sc-aYaIB fLhaLP"
+              label="Data de admissão"
+              type="date"
+            />
+            <span
+              style="font-size: 12px; color: red;"
+            />
+          </div>
+          <button
+            class="sc-eqUzNf gvJhSY"
+          >
+            Cadastrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="sc-dcJtft iuIYWX"
+    >
+      <div
+        class="sc-iGgVNO dYuAyX"
+      >
+        <button
+          aria-label="back"
+          class="sc-gEvDqW ehnXWQ"
+        >
+          <svg
+            aria-hidden="true"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <div>
+          <label>
+            Nome
+          </label>
+          <input
+            class="sc-aYaIB fLhaLP"
+            label="Nome"
+            placeholder="Nome"
+          />
+          <span
+            style="font-size: 12px; color: red;"
+          />
+        </div>
+        <div>
+          <label>
+            Email
+          </label>
+          <input
+            class="sc-aYaIB fLhaLP"
+            label="Email"
+            placeholder="Email"
+            type="email"
+          />
+          <span
+            style="font-size: 12px; color: red;"
+          />
+        </div>
+        <div>
+          <label>
+            CPF
+          </label>
+          <input
+            class="sc-aYaIB fLhaLP"
+            label="CPF"
+            placeholder="CPF"
+            value=""
+          />
+          <span
+            style="font-size: 12px; color: red;"
+          />
+        </div>
+        <div>
+          <label>
+            Data de admissão
+          </label>
+          <input
+            class="sc-aYaIB fLhaLP"
+            label="Data de admissão"
+            type="date"
+          />
+          <span
+            style="font-size: 12px; color: red;"
+          />
+        </div>
+        <button
+          class="sc-eqUzNf gvJhSY"
+        >
+          Cadastrar
+        </button>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
