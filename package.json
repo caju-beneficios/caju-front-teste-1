@@ -8,6 +8,7 @@
     "init:db": "json-server --watch db.json",
     "build": "tsc && vite build",
     "test:dev": "jest --watch --verbose --no-cache",
+    "test": "jest --verbose --no-cache",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -17,13 +18,16 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
+    "react-query": "^3.39.3",
     "react-router-dom": "5.1.2",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@nabla/vite-plugin-eslint": "^2.0.4",
-    "@testing-library/jest-dom": "^6.4.6",
-    "@testing-library/react": "13.0.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-router-dom": "^5.3.3",
