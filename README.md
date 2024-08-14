@@ -86,9 +86,17 @@ Content-Type: application/json
 
 ## Dicas e sugestões
 
-- Crie custom hooks para separar a lógica da camada de UI.
+- Crie custom hooks para separar a lógica da camada de UI
 - Utilize alguma lib de validação para o formulário
-- Crie testes que simulem o comportamento esperado do usuario.
+- Crie testes que simulem o comportamento esperado do usuario
+
+### Sua performance será avaliada com base nos seguintes pontos:
+
+- A aplicação funciona conforme o esperado e tem uma estrutura lógica bem organizada
+- Se preocupou com a experiência do usuário
+- Os problemas foram resolvidos com eficiência
+- O código é de fácil leitura
+- Demonstra conhecimento de como testar as partes críticas da aplicação. Não exigimos 100% de cobertura
 
 ## Desenvolvimento
 
