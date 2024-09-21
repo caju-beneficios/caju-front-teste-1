@@ -13,7 +13,7 @@
       "admissionDate": "22/10/2023",
       "email": "filipe@caju.com.br",
       "employeeName": "Filipe Marins",
-      "status": "APPROVED",
+      "status": "REVIEW",
       "cpf": "78502270001"
     },
     {
@@ -30,7 +30,7 @@
       "email": "luizeduardob@live.com",
       "cpf": "11762235420",
       "admissionDate": "1996-09-06",
-      "status": "REVIEW"
+      "status": "APPROVED"
     }
   ]
 }
