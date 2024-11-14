@@ -1,24 +1,49 @@
 import { HiRefresh } from "react-icons/hi";
 import { useHistory } from "react-router-dom";
-import Button from "~/components/Buttons";
-import { IconButton } from "~/components/Buttons/IconButton";
-import TextField from "~/components/TextField";
-import routes from "~/router/routes";
+import Button from "src/components/Buttons";
+import { IconButton } from "src/components/Buttons/IconButton";
+import routes from "src/router/routes";
 import * as S from "./styles";
-export const SearchBar = () => {
+import { useAppContext } from "src/pages/Dashboard/contexts/user";
+
+import CPFInput from "src/components/InputCpf";
+import { useQueryClient } from "@tanstack/react-query";
+import { messageApi } from "src/components/Message";
+
+type SearchBarProps = {
+  handleSearch: (cpf: string) => void;
+};
+
+export const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
+  const queryClient = useQueryClient();
+
   const history = useHistory();
 
   const goToNewAdmissionPage = () => {
     history.push(routes.newUser);
   };
-  
+  const { isLoading } = useAppContext();
+
   return (
     <S.Container>
-      <TextField  placeholder="Digite um CPF válido" />
+      <CPFInput handleSearch={handleSearch} />
       <S.Actions>
-        <IconButton aria-label="refetch">
-          <HiRefresh />
-        </IconButton>
+        <S.RotateIconContainer $isloading={isLoading}>
+          <IconButton
+            aria-label="refetch"
+            onClick={() => {
+              queryClient.invalidateQueries(["usersList"]).then(() =>
+                messageApi.open({
+                  type: "success",
+                  content: "Consulta refeita com sucesso!",
+                })
+              );
+            }}
+          >
+            <HiRefresh />
+          </IconButton>
+        </S.RotateIconContainer>
+
         <Button onClick={() => goToNewAdmissionPage()}>Nova Admissão</Button>
       </S.Actions>
     </S.Container>

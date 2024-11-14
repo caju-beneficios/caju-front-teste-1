@@ -1,7 +1,7 @@
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import routes from "./routes";
-import DashboardPage from "~/pages/Dashboard";
-import NewUserPage from "~/pages/NewUser";
+import DashboardPage from "src/pages/Dashboard";
+import NewUserPage from "src/pages/NewUser";
 
 const Router = () => {
   return (

@@ -1,4 +1,5 @@
-import { ButtonSmall } from "~/components/Buttons";
+import { User, Status, Action } from "src/services/Users/dtos/Users.dto";
+import { ButtonSmall } from "src/components/Buttons";
 import * as S from "./styles";
 import {
   HiOutlineMail,
@@ -6,32 +7,83 @@ import {
   HiOutlineCalendar,
   HiOutlineTrash,
 } from "react-icons/hi";
+import theme from "src/styles/theme";
 
-type Props = {
-  data: any;
+import { useAppContext } from "src/pages/Dashboard/contexts/user";
+
+type RegistrationCardProps = {
+  user: User;
 };
 
-const RegistrationCard = (props: Props) => {
+interface ButtonProps {
+  bgcolor: string;
+  label: string;
+  action: Action;
+}
+
+const RegistrationCard: React.FC<RegistrationCardProps> = ({ user }) => {
+  const { setCurrentUser, setAction, setIsOpen } = useAppContext();
+
+  const handleAction = (action: Action): void => {
+    setCurrentUser(user);
+    setAction(action);
+    setIsOpen(true);
+  };
+
+  const getButtonsByStatus = (status: Status): ButtonProps[] => {
+    switch (status) {
+      case "APPROVED":
+      case "REPROVED":
+        return [
+          {
+            bgcolor: theme.colors.cajuCoralOrange,
+            label: "Revisar novamente",
+            action: "REVIEW",
+          },
+        ];
+      case "REVIEW":
+        return [
+          {
+            bgcolor: theme.colors.cajuSoftPink,
+            label: "Reprovar",
+            action: "REPROVED",
+          },
+          {
+            bgcolor: theme.colors.cajuPastelGreen,
+            label: "Aprovar",
+            action: "APPROVED",
+          },
+        ];
+      default:
+        return [];
+    }
+  };
+
   return (
     <S.Card>
       <S.IconAndText>
         <HiOutlineUser />
-        <h3>{props.data.employeeName}</h3>
+        <h3>{user.employeeName}</h3>
       </S.IconAndText>
       <S.IconAndText>
         <HiOutlineMail />
-        <p>{props.data.email}</p>
+        <p>{user.email}</p>
       </S.IconAndText>
       <S.IconAndText>
         <HiOutlineCalendar />
-        <span>{props.data.admissionDate}</span>
+        <span>{user.admissionDate}</span>
       </S.IconAndText>
       <S.Actions>
-        <ButtonSmall bgcolor="rgb(255, 145, 154)" >Reprovar</ButtonSmall>
-        <ButtonSmall bgcolor="rgb(155, 229, 155)">Aprovar</ButtonSmall>
-        <ButtonSmall bgcolor="#ff8858">Revisar novamente</ButtonSmall>
-
-        <HiOutlineTrash />
+        {getButtonsByStatus(user.status as Status).map((button, index) => (
+          <ButtonSmall
+            key={index}
+            $bgcolor={button.bgcolor}
+            onClick={() => handleAction(button.action)}
+          >
+            {button.label}
+          </ButtonSmall>
+        ))}
+        <HiOutlineTrash onClick={() => handleAction("REMOVE")} />
       </S.Actions>
     </S.Card>
   );

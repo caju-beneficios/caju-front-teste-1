@@ -1,36 +1,46 @@
-
 import * as S from "./styles";
-import RegistrationCard from "../RegistrationCard";
+import RegistrationCard from "src/pages/Dashboard/components/RegistrationCard";
+import { User, Status } from "src/services/Users/dtos/Users.dto";
 
-const allColumns = [
-  { status: 'REVIEW', title: "Pronto para revisar" },
-  { status: 'APPROVED', title: "Aprovado" },
-  { status: 'REPROVED', title: "Reprovado" },
+type Column = {
+  status: Status;
+  title: string;
+};
+
+const allColumns: Column[] = [
+  { status: "REVIEW", title: "Pronto para revisar" },
+  { status: "APPROVED", title: "Aprovado" },
+  { status: "REPROVED", title: "Reprovado" },
 ];
 
-type Props = {
-  registrations?: any[];
+type ColumnsProps = {
+  registrations?: User[];
 };
-const Collumns = (props: Props) => {
+
+const Columns: React.FC<ColumnsProps> = ({ registrations }) => {
   return (
     <S.Container>
-      {allColumns.map((collum) => {
+      {allColumns.map((column) => {
         return (
-          <S.Column status={collum.status} key={collum.title}>
+          <S.Column $status={column.status} key={column.title}>
             <>
-              <S.TitleColumn status={collum.status}>
-                {collum.title}
+              <S.TitleColumn $status={column.status}>
+                {column.title}
               </S.TitleColumn>
-              <S.CollumContent>
-                {props?.registrations?.map((registration) => {
-                  return (
-                    <RegistrationCard
-                      data={registration}
-                      key={registration.id}
-                    />
-                  );
-                })}
-              </S.CollumContent>
+              <S.ColumnContent>
+                {registrations
+                  ?.filter(
+                    (registration) => registration.status === column.status
+                  )
+                  .map((registration) => {
+                    return (
+                      <RegistrationCard
+                        user={registration}
+                        key={registration.id}
+                      />
+                    );
+                  })}
+              </S.ColumnContent>
             </>
           </S.Column>
         );
@@ -38,4 +48,4 @@ const Collumns = (props: Props) => {
     </S.Container>
   );
 };
-export default Collumns;
+export default Columns;

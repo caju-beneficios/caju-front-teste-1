@@ -1,18 +1,19 @@
 import styled from "styled-components";
+import theme from "src/styles/theme";
 const registrationStatusStyles: {
   [key in string]: { background: string; title: string };
 } = {
   REVIEW: {
-    background: "#FDF8E9",
-    title: "#EFC24D",
+    background: theme.colors.cajuLightBeige,
+    title: theme.colors.cajuGoldenYellow,
   },
   APPROVED: {
-    background: "#EEEEFD",
-    title: "#4242DF",
+    background: theme.colors.cajuSoftLilac,
+    title: theme.colors.cajuDeepBlue,
   },
   REPROVED: {
-    background: "#FBEDF6",
-    title: "#CE2893",
+    background: theme.colors.cajuPalePink,
+    title: theme.colors.cajuBrightPink,
   },
 };
 
@@ -24,22 +25,22 @@ export const Container = styled.div`
   margin-top: 24px;
 `;
 
-export const Column = styled.div<{ status: any }>`
+export const Column = styled.div<{ $status: any }>`
   height: auto;
-  background-color: ${({ status }) =>
-    registrationStatusStyles[status].background};
+  background-color: ${({ $status }) =>
+    registrationStatusStyles[$status].background};
   border-radius: 32px;
   min-height: 80vh;
   max-height: 80vh;
 `;
 
-export const TitleColumn = styled.h3<{ status: any }>`
+export const TitleColumn = styled.h3<{ $status: any }>`
   margin: 0px;
-  color: ${({ status }) => registrationStatusStyles[status].title};
+  color: ${({ $status }) => registrationStatusStyles[$status].title};
   margin: 24px;
 `;
 
-export const CollumContent = styled.div`
+export const ColumnContent = styled.div`
   overflow: auto;
   max-height: 85%;
 `;
