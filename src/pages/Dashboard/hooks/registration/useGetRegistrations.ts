@@ -3,25 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import type { CustomError } from '~/data/models/errors';
 import type { RegistrationPaginateResponse } from '~/data/models/registration';
 import { getRegistrations } from '~/data/services/registration/registration-service';
-
-interface UseGetRegistrationsParams {
-    currentPage: number;
-    pageSize?: number;
-    cpf?: string;
-    status?: string;
-}
-
-interface UseGetRegistrationsReturn {
-    registrations: RegistrationPaginateResponse['data'] | undefined;
-    isLoading: boolean;
-    isError: boolean;
-    error: CustomError | null;
-    refetch: () => void;
-    totalPages: number;
-    totalRegistrations: number;
-    currentPage: number;
-    isFetching: boolean;
-}
+import type { UseGetRegistrationsParams, UseGetRegistrationsReturn } from './types';
 
 const useGetRegistrations = ({
     currentPage,

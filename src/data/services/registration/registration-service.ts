@@ -8,7 +8,7 @@ export const getRegistrations = async (
     status?: string
 ): Promise<RegistrationPaginateResponse> => {
     try {
-        const response = await axios.get('http://localhost:3000/registrations', {
+        const response = await axios.get('http://localhost:3002/registrations', {
             params: {
                 _page: page,
                 _limit: limit,
@@ -30,7 +30,6 @@ export const getRegistrations = async (
             currentPage: page
         };
     } catch (error) {
-        console.log("teve um erro mané")
         throw error;
     }
 };

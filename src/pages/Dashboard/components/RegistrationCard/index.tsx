@@ -13,7 +13,7 @@ type Props = {
 
 const RegistrationCard = (props: Props) => {
   return (
-    <S.Card>
+    <S.Card data-testid="registration-card">
       <S.IconAndText>
         <HiOutlineUser />
         <h3>{props.data.employeeName}</h3>

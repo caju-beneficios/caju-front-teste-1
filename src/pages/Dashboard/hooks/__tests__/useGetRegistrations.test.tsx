@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { renderHook, waitFor } from "@testing-library/react";
 import { ReactNode } from "react";
 import { getRegistrations } from "~/data/services/registration/registration-service";
-import useGetRegistrations from "../useGetRegistrations";
+import useGetRegistrations from "../registration/useGetRegistrations";
 import RegistrationPaginatedMockBuilder from "~/utils/__mocks__/RegistrationPaginatedMockBuilder";
 
 

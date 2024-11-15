@@ -21,6 +21,6 @@ export default {
       lines: 80,
       statements: 80
     }
-  }
-  //   setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+  },
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"]
 };
